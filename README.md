@@ -6,9 +6,9 @@ wakate2014
 
 ## Program
 
-The program is available [here](http://misc.kankyo-u.ac.jp/~satoru-y/wakate14/program20141111.html).
+The program is available [here](http://misc.kankyo-u.ac.jp/~satoru-y/wakate14/program20141112.html).
 
 My talk:
-* date: 11/19, 16:00 - 16:50 (50 minutes)
+* date: 11/19, 16:10 - 17:00 (50 minutes)
 * Title: Univalent foundations
 
