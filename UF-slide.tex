@@ -1,10 +1,11 @@
 %\PassOptionsToPackage{pdfencoding=auto}{hyperref}
 \documentclass[dvipdfmx]{beamer}
+\usepackage{etex}
 %\usepackage{luatexja, luatexja-otf}
 \usepackage{amsmath, amssymb, amsfonts, amsthm}
 \usepackage{array,booktabs}
-%\usepackage{booktabs}
 \usepackage{bussproofs}
+\usepackage[all]{xy}
 \title{Univalent Foundations}
 \author{Taichi Uemura}
 
@@ -71,7 +72,7 @@
   \begin{description}
     \item[Path induction]\mbox{}\\
       powerfull induction principle for path spaces
-    \item[Univalent Axiom]\mbox{}\\
+    \item[Univalence Axiom]\mbox{}\\
       isomorphic types are identical
     \item[Higher Inductive Types]\mbox{}\\
       types with path constructors as well as usual constructors
@@ -129,7 +130,7 @@ p * idp = p
   \end{verbatim}
 \end{frame}
 
-\subsection{Univalent Axiom}
+\subsection{Univalence Axiom}
 
 \begin{frame}
   \frametitle{Homotopies and Equivalences}
@@ -150,7 +151,7 @@ p * idp = p
 \end{frame}
 
 \begin{frame}
-  \frametitle{Univalent Axiom}
+  \frametitle{Univalence Axiom}
   postulates
   $$
   ua : \Pi \left( A \ B : Type \right) .
@@ -200,7 +201,7 @@ p * idp = p
 
 \begin{frame}
   \frametitle{Example - the universal cover of ${\mathbb S}^1$}
-  Combined with the Univalent Axiom,
+  Combined with the Univalence Axiom,
   we can construct the {\it universal cover} of ${\mathbb S}^1$:
   $$
     \widetilde{ {\mathbb S}^1 } : {\mathbb S}^1 \to Type
@@ -249,6 +250,59 @@ p * idp = p
 
 \section{Models of HoTT}
 
+\subsection{Models of dependent type theory}
+
+\begin{frame}
+  \frametitle{How to interpret the type theory?}
+  We want a {\it model} of the Homotopy Type Theory
+  to show that the theory is consistent relative to,
+  for instance, ZFC
+  \\
+  or
+  to obtain a {\it computational} interpretation of
+  the Univalence Axiom.\nocite{bezem_et_all:LIPIcs:20144628}
+\end{frame}
+
+\begin{frame}
+  \frametitle{A C-system}
+  is a category $CC$ which has the notion of
+  {\it ``type dependencies''}:
+  \begin{itemize}
+    \item $CC$ has a final object $pt$
+    \item all $\Gamma \in Ob \left( CC \right)$ but $pt$
+      have canonical projections
+      $p_{\Gamma} : \Gamma \to ft \left( \Gamma \right)$
+    \item canonical projections can be pulled back
+      with strict functoriality
+  \end{itemize}
+  so that every $\Gamma \in Ob \left( CC \right)$
+  has the chain
+  \[
+  \Gamma \overset{p}{\to} ft \left( \Gamma \right)
+  \overset{p}{\to} ft^2 \left( \Gamma \right)
+  \overset{p}{\to} \dots
+  \overset{p}{\to} pt
+  \]
+  of dependencies.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Universe in a category ${\mathbb C}$}
+  is an morphism $p : \tilde{U} \to U$ in ${\mathbb C}$
+  together with a mapping which assigns to any morphism
+  $A : \Gamma \to U$ in ${\mathbb C}$ a pull-back square
+  \[
+    \xymatrix{
+      \left( \Gamma , A \right) \ar[r]^{Q \left( A \right)}
+      \ar[d]_{p \left( \Gamma , A \right)}
+        & \tilde{U} \ar[d]^{p}
+        \\
+        \Gamma \ar[r]^{A}
+        & U
+    }
+  \]
+\end{frame}
+
 \subsection{Simplicial sets}
 
 \begin{frame}
@@ -259,20 +313,20 @@ p * idp = p
   \cite{kapulkin2012simplicial,kapulkin2012univalence}
 \end{frame}
 
-\subsection{Cubical sets}
-
-\begin{frame}
-  \frametitle{Cubical sets}
-  Bezem, Coquand and Huber constructed
-  a model of dependent type theory
-  in the category of cubical sets.
-  \cite{bezem_et_al:LIPIcs:2014:4628}
-\end{frame}
+%\subsection{Cubical sets}
+%
+%\begin{frame}
+  %\frametitle{Cubical sets}
+  %Bezem, Coquand and Huber constructed
+  %a model of dependent type theory
+  %in the category of cubical sets.
+  %\cite{bezem_et_al:LIPIcs:2014:4628}
+%\end{frame}
 
 \section{References}
 
 \bibliographystyle{plain}
-\bibliography{refs}
+\bibliography{UF-slide}
 
 \end{document}
 

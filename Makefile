@@ -8,14 +8,14 @@ UF-slide.dvi: UF-slide.bbl
 	$(LATEX_UF)
 	$(LATEX_UF)
 
-UF-slide.bbl: refs.bib
+UF-slide.bbl: UF-slide.bib
 	$(LATEX_UF)
 	bibtex UF-slide
 	$(RM) UF-slide.dvi
 
-refs.bib:
+UF-slide.bib:
 	wget http://www.bibsonomy.org/bib/user/t.uemura
-	mv t.uemura refs.bib
+	mv t.uemura UF-slide.bib
 
 rebuild: clean UF-slide.pdf
 
@@ -30,4 +30,4 @@ clean:
 	$(RM) *.pdf
 	$(RM) *.snm
 	$(RM) *.toc
-	$(RM) refs.bib
+	$(RM) *.bib
