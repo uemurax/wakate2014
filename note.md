@@ -10,7 +10,9 @@ note
   - formalization in [Coq](https://coq.inria.fr)
     and [Agda](http://wiki.portal.chalmers.se/agda/pmwiki.php)
 * models of type theory
-  - factorization systems
-  - C-systems and B-systems
-  - E-systems
+  - simplicial sets
+  - <del>cubical sets</del>
+  - C-systems <del>and B-systems</del>
+    * C-system defined by a universe
+  - <del>E-systems</del>
 
