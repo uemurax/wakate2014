@@ -93,10 +93,11 @@
     \item[=-elim]\mbox{}\\
       \AxiomC{$x \ y : A , p : x = y \vdash D \left( p \right) : Type$}
       \AxiomC{$x : A \vdash d : D \left( idp_x \right)$}
-      \BinaryInfC{$x \ y : A , p : x = y \vdash ind \left( d , p \right) : D \left( p \right)$}
+      \BinaryInfC{$x \ y : A , p : x = y \vdash
+      ind_{=} \left( d , p \right) : D \left( p \right)$}
       \DisplayProof
     \item[=-comp]\mbox{}\\
-      {$x : A \vdash ind \left( d , idp_x \right) \equiv d$}
+      {$x : A \vdash ind_{=} \left( d , idp_x \right) \equiv d$}
   \end{description}
 
   i.e.
@@ -250,8 +251,6 @@ p * idp = p
 
 \section{Models of HoTT}
 
-\subsection{Models of dependent type theory}
-
 \begin{frame}
   \frametitle{How to interpret the type theory?}
   We want a {\it model} of the Homotopy Type Theory
@@ -263,27 +262,155 @@ p * idp = p
   the Univalence Axiom.\nocite{bezem_et_all:LIPIcs:20144628}
 \end{frame}
 
+%\begin{frame}
+  %\frametitle{A C-system\footnote{
+    %originally, C-systems were introduced by Cartmell
+    %\cite{Cartmell1986209}
+    %under the name ``contextual categories''.
+    %The name ``C-system'' is given by Voevodsky
+    %\cite{voevodsky2014subsystems}.
+    %}
+  %}
+  %is a category $CC$ which has the notion of
+  %{\it ``type dependencies''}:
+  %\begin{itemize}
+    %\item $CC$ has a final object $pt$
+    %\item all $\Gamma \in Ob \left( CC \right)$ but $pt$
+      %have canonical projections
+      %$p_{\Gamma} : \Gamma \to ft \left( \Gamma \right)$
+    %\item canonical projections can be pulled back
+      %with strict functoriality
+  %\end{itemize}
+  %so that every $\Gamma \in Ob \left( CC \right)$
+  %has the chain
+  %\[
+  %\Gamma \overset{p}{\to} ft \left( \Gamma \right)
+  %\overset{p}{\to} ft^2 \left( \Gamma \right)
+  %\overset{p}{\to} \dots
+  %\overset{p}{\to} pt
+  %\]
+  %of dependencies.
+%\end{frame}
+
+\subsection{Factorization systems}
+
 \begin{frame}
-  \frametitle{A C-system}
-  is a category $CC$ which has the notion of
-  {\it ``type dependencies''}:
+  \frametitle{A weak factorization system
+  \nocite{warren2008homotopy}}
+  consists of:
   \begin{itemize}
-    \item $CC$ has a final object $pt$
-    \item all $\Gamma \in Ob \left( CC \right)$ but $pt$
-      have canonical projections
-      $p_{\Gamma} : \Gamma \to ft \left( \Gamma \right)$
-    \item canonical projections can be pulled back
-      with strict functoriality
+    \item two collections ${\mathcal L}$ ({\it acyclic cofibrations})
+      and ${\mathcal R}$ ({\it fibrations})
+      of maps in a category ${\mathbb C}$
+      such that
+      \begin{itemize}
+        \item every map $f : A \to B$ has a factorization as
+          \[
+            \xymatrix{
+              A \ar[rr]^{i} \ar[dr]_{f}
+              &
+              & C \ar[dl]^{p}
+              \\
+              & B
+              &
+            }
+          \]
+          where $i \in {\mathcal L}$ and $p \in {\mathcal R}$
+        \item a map $f : A \to B$ is an acyclic cofibration iff
+          $f$ has the {\it left lifting property} w.r.t.
+          all fibrations
+        \item a map $g : C \to D$ is a fibration iff
+          $g$ has the {\it right lifting property} w.r.t.
+          all acyclic cofibrations
+      \end{itemize}
   \end{itemize}
-  so that every $\Gamma \in Ob \left( CC \right)$
-  has the chain
   \[
-  \Gamma \overset{p}{\to} ft \left( \Gamma \right)
-  \overset{p}{\to} ft^2 \left( \Gamma \right)
-  \overset{p}{\to} \dots
-  \overset{p}{\to} pt
+    \xymatrix{
+      A \ar[r]^{h} \ar[d]_{ {\mathcal L} \ni f}
+      & C \ar[d]^{g \in {\mathcal R}}
+      \\
+      B \ar[r]_{k} \ar@{.>}[ur]^{J}
+      & D
+    }
   \]
-  of dependencies.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Model categories}
+  Weak factorization systems are often provided
+  by {\it model structures}.
+  \\
+  For example
+  \begin{itemize}
+    \item the category ${\rm Top}$ of topological spaces
+      with {\it Serre fibrations}
+    \item the category ${\rm SSet}$ of simplicial sets
+      with {\it Kan fibrations}
+    \item the category ${\rm Gpd}$ of groupoids
+      with {\it Grothendieck fibrations}
+  \end{itemize}
+  these are arose in homotopy theory or
+  higher category theory.
+\end{frame}
+
+\begin{frame}
+  \frametitle{The interpretation of type families}
+  While the idea of the Curry-Howard correspondence is
+  ``Propositions as Types'',
+  that of the homotopical interpretation is
+  \begin{center}
+    {\it Fibrations as Types}.
+  \end{center}
+  Let $\left( {\mathcal L} , {\mathcal R} \right)$
+  be a weak factorization system in a category ${\mathbb C}$.
+  \\
+  A type family $x : A \vdash B \left( x \right) : Type$
+  will be interpreted as a {\it fibration} $p_{B} : B \to A$
+  and an inhabitant
+  $x : A \vdash b \left( x \right) : B \left( x \right)$
+  as a {\it section} of
+  $B \to A$:
+  \[
+    \xymatrix{
+      & B \ar[d]^{p_{B}}
+      \\
+      A \ar@{=}[r] \ar[ur]^{b}
+      & A
+    }
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{The interpretation of identity types}
+  For every fibration $A \to \Gamma$
+  we have a factorization of a diagonal map
+  \[
+    \xymatrix{
+      A \ar[rr]^{r} \ar[dr]_{\Delta}
+      &
+      & Id_{A} \ar[dl]^{p_{Id_A}}
+      \\
+      & A \times _{\Gamma}  A
+      &
+    }
+  \]
+  over $\Gamma$, where $r$ is an acyclic cofibration
+  and $p_{Id_A}$ is a fibration.
+  \\
+  Using lifting property,
+  the induction principle can be interpreted as
+  \[
+    \xymatrix{
+      A \ar[rr]^{d} \ar[dd]_{r}
+      &
+      & D \ar[dd]^{p_{D}}
+      \\
+      & & \\
+      Id_{A} \ar@{=}[rr] \ar@{.>}[urur]^{ind_{=} \left( d \right)}
+      &
+      & Id_{A}
+    }
+  \]
 \end{frame}
 
 \begin{frame}
@@ -301,6 +428,46 @@ p * idp = p
         & U
     }
   \]
+  %We think of $A$ as a {\it characteristic function} of
+  %$\left( \Gamma , A \right)$.
+  We think of $U$ as a set of types and
+  $\tilde{U}$ as a set of terms.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Interpretation of identity types}
+  {\it Id-structure} on a universe consists of:
+  \begin{itemize}
+    \item $Id : \tilde{U} \times _{U} \tilde{U} \to U$
+    and $r : \tilde{U} \to
+    \left( \tilde{U} \times _{U} \tilde{U} , Id\right)$
+    such that the triangle
+    \[
+      \xymatrix{
+        \tilde{U} \ar[rr]^{r}
+        \ar[dr]_{\Delta _{\tilde{U}}}
+        &
+        & \left( \tilde{U} \times _{U} \tilde{U} , Id \right)
+        \ar[dl]^{p \left( \tilde{U} \times _{U} \tilde{U} , Id \right)}
+        \\
+        & \tilde{U} \times _{U} \tilde{U}
+        &
+      }
+    \]
+    commutes
+    \item the following {\it lifting property}
+      in ${\mathbb C} / U$:
+      \[
+        \xymatrix{
+          \tilde{U} \ar[r]^{d} \ar[d]_{r}
+          & \tilde{U} \times U \ar[d]^{p \times U}
+          \\
+          \left( \tilde{U} \times _{U} \tilde{U} , Id \right)
+          \ar@{.>}[ur]^{ind_{=}} \ar[r]_{D}
+          & U \times U
+        }
+      \]
+  \end{itemize}
 \end{frame}
 
 \subsection{Simplicial sets}
@@ -309,8 +476,8 @@ p * idp = p
   \frametitle{Simplicial sets}
   Kapulkin, Lumsdaine and Voevodsky constructed
   a model of the Univalent Foundations of Mathematics
-  in the category of simplicial sets.
-  \cite{kapulkin2012simplicial,kapulkin2012univalence}
+  in the category of simplicial sets
+  \cite{kapulkin2012simplicial,kapulkin2012univalence}.
 \end{frame}
 
 %\subsection{Cubical sets}
