@@ -1,6 +1,8 @@
 RM = rm -f
 LATEX_UF = latex -shell-escape UF-slide.tex
 
+build: UF-slide.pdf
+
 UF-slide.pdf: UF-slide.dvi
 	dvipdfmx UF-slide.dvi
 
@@ -17,7 +19,7 @@ UF-slide.bib:
 	wget http://www.bibsonomy.org/bib/user/t.uemura
 	mv t.uemura UF-slide.bib
 
-rebuild: clean UF-slide.pdf
+rebuild: clean build
 
 clean:
 	$(RM) *.aux
