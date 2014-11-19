@@ -343,36 +343,6 @@ ap f idp = idp
   the Univalence Axiom.\nocite{bezem_et_all:LIPIcs:20144628}
 \end{frame}
 
-%\begin{frame}
-  %\frametitle{A C-system\footnote{
-    %originally, C-systems were introduced by Cartmell
-    %\cite{Cartmell1986209}
-    %under the name ``contextual categories''.
-    %The name ``C-system'' is given by Voevodsky
-    %\cite{voevodsky2014subsystems}.
-    %}
-  %}
-  %is a category $CC$ which has the notion of
-  %{\it ``type dependencies''}:
-  %\begin{itemize}
-    %\item $CC$ has a final object $pt$
-    %\item all $\Gamma \in Ob \left( CC \right)$ but $pt$
-      %have canonical projections
-      %$p_{\Gamma} : \Gamma \to ft \left( \Gamma \right)$
-    %\item canonical projections can be pulled back
-      %with strict functoriality
-  %\end{itemize}
-  %so that every $\Gamma \in Ob \left( CC \right)$
-  %has the chain
-  %\[
-  %\Gamma \overset{p}{\to} ft \left( \Gamma \right)
-  %\overset{p}{\to} ft^2 \left( \Gamma \right)
-  %\overset{p}{\to} \dots
-  %\overset{p}{\to} pt
-  %\]
-  %of dependencies.
-%\end{frame}
-
 \subsection{Factorization systems}
 
 \begin{frame}
@@ -506,93 +476,6 @@ ap f idp = idp
   \]
 \end{frame}
 
-%\begin{frame}
-  %\frametitle{Universe in a category ${\mathbb C}$}
-  %is an morphism $p : \tilde{U} \to U$ in ${\mathbb C}$
-  %together with a mapping which assigns to any morphism
-  %$A : \Gamma \to U$ in ${\mathbb C}$ a pull-back square
-  %\[
-    %\xymatrix{
-      %\left( \Gamma , A \right) \ar[r]^{Q \left( A \right)}
-      %\ar[d]_{p \left( \Gamma , A \right)}
-        %& \tilde{U} \ar[d]^{p}
-        %\\
-        %\Gamma \ar[r]^{A}
-        %& U
-    %}
-  %\]
-  %%We think of $A$ as a {\it characteristic function} of
-  %%$\left( \Gamma , A \right)$.
-  %We think of $U$ as a set of types and
-  %$\tilde{U}$ as a set of terms.
-%\end{frame}
-%
-%\begin{frame}
-  %\frametitle{Interpretation of identity types}
-  %{\it Id-structure} on a universe consists of:
-  %\begin{itemize}
-    %\item $Id : \tilde{U} \times _{U} \tilde{U} \to U$
-    %and $r : \tilde{U} \to
-    %\left( \tilde{U} \times _{U} \tilde{U} , Id\right)$
-    %such that the triangle
-    %\[
-      %\xymatrix{
-        %\tilde{U} \ar[rr]^{r}
-        %\ar[dr]_{\Delta _{\tilde{U}}}
-        %&
-        %& \left( \tilde{U} \times _{U} \tilde{U} , Id \right)
-        %\ar[dl]^{p \left( \tilde{U} \times _{U} \tilde{U} , Id \right)}
-        %\\
-        %& \tilde{U} \times _{U} \tilde{U}
-        %&
-      %}
-    %\]
-    %commutes
-    %\item the following {\it lifting property}
-      %in ${\mathbb C} / U$:
-      %\[
-        %\xymatrix{
-          %\tilde{U} \ar[r]^{d} \ar[d]_{r}
-          %& \tilde{U} \times U \ar[d]^{p \times U}
-          %\\
-          %\left( \tilde{U} \times _{U} \tilde{U} , Id \right)
-          %\ar@{.>}[ur]^{ind_{=}} \ar[r]_{D}
-          %& U \times U
-        %}
-      %\]
-  %\end{itemize}
-%\end{frame}
-
-%\subsection{Simplicial sets}
-%
-%\begin{frame}
-  %\frametitle{Models in ${\rm SSet}$}
-  %Kapulkin, Lumsdaine and Voevodsky constructed
-  %a model of the Univalent Foundations of Mathematics
-  %in the category ${\rm SSet}$ of {\it simplicial sets} and
-  %showed that in this model
-  %the Univalence Axiom holds
-  %\cite{kapulkin2012simplicial,kapulkin2012univalence}.
-%\end{frame}
-%
-%\begin{frame}
-  %\frametitle{Simplicial sets}
-  %are generalizations of the geometric simplicial complexes.
-  %\nocite{friedman2008elementary}
-  %A simplicial set is built up out of gluing abstract simpleces
-  %to each other.
-%\end{frame}
-
-%\subsection{Cubical sets}
-%
-%\begin{frame}
-  %\frametitle{Cubical sets}
-  %Bezem, Coquand and Huber constructed
-  %a model of dependent type theory
-  %in the category of cubical sets.
-  %\cite{bezem_et_al:LIPIcs:2014:4628}
-%\end{frame}
-
 \section{Next stage}
 
 \begin{frame}
@@ -645,6 +528,168 @@ ap f idp = idp
 
 \bibliographystyle{plain}
 \bibliography{UF-slide}
+
+\section*{Appendix}
+
+\subsection*{C-systems}
+
+\begin{frame}
+  \frametitle{A C-system\footnote{
+    originally, C-systems were introduced by Cartmell
+    \cite{Cartmell1986209}
+    under the name ``contextual categories''.
+    The name ``C-system'' is given by Voevodsky
+    \cite{voevodsky2014subsystems}.
+    }
+  }
+  is a category $CC$ which has the notion of
+  {\it ``type dependencies''}:
+  \begin{itemize}
+    \item $CC$ has a final object $pt$
+    \item all $\Gamma \in Ob \left( CC \right)$ but $pt$
+      have canonical projections
+      $p_{\Gamma} : \Gamma \to ft \left( \Gamma \right)$
+    \item canonical projections can be pulled back
+      with strict functoriality
+  \end{itemize}
+  so that every $\Gamma \in Ob \left( CC \right)$
+  has the chain
+  \[
+  \Gamma \overset{p}{\to} ft \left( \Gamma \right)
+  \overset{p}{\to} ft^2 \left( \Gamma \right)
+  \overset{p}{\to} \dots
+  \overset{p}{\to} pt
+  \]
+  of dependencies.
+\end{frame}
+
+\subsection*{Universe in a category}
+
+\begin{frame}
+  \frametitle{Universe in a category ${\mathbb C}$}
+  is an morphism $p : \tilde{U} \to U$ in ${\mathbb C}$
+  together with a mapping which assigns to any morphism
+  $A : \Gamma \to U$ in ${\mathbb C}$ a pull-back square
+  \[
+    \xymatrix{
+      \left( \Gamma , A \right) \ar[r]^{Q \left( A \right)}
+      \ar[d]_{p \left( \Gamma , A \right)}
+        & \tilde{U} \ar[d]^{p}
+        \\
+        \Gamma \ar[r]^{A}
+        & U
+    }
+  \]
+  %We think of $A$ as a {\it characteristic function} of
+  %$\left( \Gamma , A \right)$.
+  We think of $U$ as a set of types and
+  $\tilde{U}$ as a set of terms.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Interpretation of identity types}
+  {\it Id-structure} on a universe consists of:
+  \begin{itemize}
+    \item $Id : \tilde{U} \times _{U} \tilde{U} \to U$
+    and $r : \tilde{U} \to
+    \left( \tilde{U} \times _{U} \tilde{U} , Id\right)$
+    such that the triangle
+    \[
+      \xymatrix{
+        \tilde{U} \ar[rr]^{r}
+        \ar[dr]_{\Delta _{\tilde{U}}}
+        &
+        & \left( \tilde{U} \times _{U} \tilde{U} , Id \right)
+        \ar[dl]^{p \left( \tilde{U} \times _{U} \tilde{U} , Id \right)}
+        \\
+        & \tilde{U} \times _{U} \tilde{U}
+        &
+      }
+    \]
+    commutes
+    \item the following {\it lifting property}
+      in ${\mathbb C} / U$:
+      \[
+        \xymatrix{
+          \tilde{U} \ar[r]^{d} \ar[d]_{r}
+          & \tilde{U} \times U \ar[d]^{p \times U}
+          \\
+          \left( \tilde{U} \times _{U} \tilde{U} , Id \right)
+          \ar@{.>}[ur]^{ind_{=}} \ar[r]_{D}
+          & U \times U
+        }
+      \]
+  \end{itemize}
+\end{frame}
+
+\subsection*{Simplicial Sets}
+
+\begin{frame}
+  \frametitle{Simplicial Sets}
+  Let $\Delta$ be the category of
+  non-empty finite ordinals and
+  order-preserving functions.
+  A simplicial set is a presheaf
+  $X : \Delta^{op} \to {\rm Set}$.
+  There are standard $n$-simplices
+  $\Delta \left[ n \right] = {\rm Hom}_{\Delta}
+  \left( - , \left[ n \right] \right)$.
+  $\Delta \left[ - \right]$ is just the Yoneda embedding.
+  There are canonical simplicial sets
+  $\partial \Delta \left[ n \right]$,
+  faces of $\Delta \left[ n \right]$,
+  and $\Lambda_n^r$,
+  removed $r$-th faces from $\partial \Delta \left[ n \right]$
+  and obvious inclusions.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kan fibrations}
+  ${\rm SSet}$ has a cofibrantly generated model structure
+  with generating cofibrations
+  $\partial \Delta \left[ n \right] \to \Delta \left[ n \right]$
+  and generating acyclic cofibrations
+  $\Lambda_n^r \to \Delta \left[ n \right]$.
+  Kan fibrations are maps with
+  right lifting property w.r.t.
+  all generating acyclic cofibrations.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Universe in {\rm SSet}}
+  A universe $p : \tilde{U} \to U$ in {\rm SSet} should have the property
+  \[
+    "Fibrations \ over \ X" \simeq \left( X \to U \right)
+  \]
+  via pulling back.
+  Intuitively (acording to Yoneda),
+  $U \left[ n \right] =
+  "Fibrations \ over \ \Delta \left[ n \right]"$.
+  Thus Kapulkin et al. used {\it well-ordering trick}
+  only for technical reason.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Univalence in {\rm SSet}}
+  Kaplukin et al. introduced the notion of
+  {\it Univalence} in ${\rm SSet}$ and
+  showed this coinsides with
+  type theoretic Univalence.
+  Furthermore, the universe $\tilde{U} \to U$
+  is univalent in the sense of ${\rm SSet}$,
+  thus ${\rm SSet}$ is a model of
+  Univalent Foundations.
+\end{frame}
+
+\subsection*{Cubical sets}
+
+\begin{frame}
+  \frametitle{Cubical sets}
+  Bezem, Coquand and Huber constructed
+  a model of dependent type theory
+  in the category of cubical sets.
+  \cite{bezem_et_al:LIPIcs:2014:4628}
+\end{frame}
 
 \end{document}
 
